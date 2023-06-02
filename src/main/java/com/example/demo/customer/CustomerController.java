@@ -2,20 +2,17 @@ package com.example.demo.customer;
 
 import com.example.demo.exception.ApiRequestException;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
 
 @RequestMapping(path = "api/v1/customers")
 @RestController
+@AllArgsConstructor
 public class CustomerController {
 
     private final CustomerService customerService;
-
-    public CustomerController(CustomerService customerService) {
-        this.customerService = customerService;
-    }
 
     @GetMapping
     List<Customer> getCustomers(){

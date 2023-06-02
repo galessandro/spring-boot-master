@@ -7,9 +7,17 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode
 public class Customer {
 
     @Id
@@ -24,16 +32,6 @@ public class Customer {
     @NotBlank(message = "email must be not empty")
     @Email
     private String email;
-
-    public Customer(Long id, String name, String password, String email) {
-        this.id = id;
-        this.name = name;
-        this.password = password;
-        this.email = email;
-    }
-
-    public Customer() {
-    }
 
     @JsonProperty("customerId")
     public Long getId() {
@@ -53,13 +51,4 @@ public class Customer {
         return email;
     }
 
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
 }
